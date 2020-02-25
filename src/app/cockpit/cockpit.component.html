@@ -3,14 +3,34 @@
     <p>Add new Servers or blueprints!</p>
     <label>Server Name</label>
     <input type="text" class="form-control" [(ngModel)]="newServerName">
+    <!-- Now important, this reference as I just said will hold a reference to this element, so not to the value we entered there, to the whole HTML element with all its properties. We can see this if we pass this now as an argument once we click add server, onAddServer. Here, I can pass serverNameInput because the other important thing you need to know about references besides how to create them is that you can use them everywhere in your template but important, only there, not inside your TypeScript code, only in the template. -->
+    <!-- <input 
+      type="text" 
+      class="form-control" 
+      #serverNameInput"> -->
     <label>Server Content</label>
-    <input type="text" class="form-control" [(ngModel)]="newServerContent">
+    <!-- {{serverNameInput.value}} -->
+    <!-- <input type="text" class="form-control" [(ngModel)]="newServerContent"> -->
+    <!-- <input 
+      type="text" 
+      class="form-control" 
+      #serverContentInput> -->
+    <input 
+      type="text" 
+      class="form-control" 
+      #serverContentInput>
     <br>
     <button
+    class="btn btn-primary mr-2"
+    (click)="onAddServer()">Add Server</button>
+    <!-- <button
       class="btn btn-primary mr-2"
-      (click)="onAddServer()">Add Server</button>
+      (click)="onAddServer(serverNameInput)">Add Server</button>
     <button
       class="btn btn-primary"
-      (click)="onAddBlueprint()">Add Server Blueprint</button>
+      (click)="onAddBlueprint(serverNameInput)">Add Server Blueprint</button> -->
+    <button
+    class="btn btn-primary"
+    (click)="onAddBlueprint()">Add Server Blueprint</button>
   </div>
 </div>
