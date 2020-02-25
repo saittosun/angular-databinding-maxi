@@ -3,9 +3,11 @@
   style="max-width: 18rem;">
   <div class="card-header">{{element.name}}</div>
   <div class="card-body text-dark">
-    <p class="card-text">
+    <!-- <p class="card-text">
       <strong *ngIf="element.type === 'server'" style="color: red">{{ element.content }}</strong>
       <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
-    </p>
+    </p> -->
+    <!-- It still is a directive, just using this element like selector and this serves as a hook you can place in your component to mark the place for Angular where it should add any content it finds between the opening and closing tag here, via the ng-content hook, we add it between the opening and closing tags and therefore it will be projected into your component, projected into your server element component. A nice feature, especially if you think about building re-usable widgets, like a tab widget where each tab will have a content which probably comes from some other source and which you don't want to pass through property binding which always would be an alternative but if it's more complex HTML code, property binding really is not the best solution because Angular will escape HTML tags there to prevent cross-site scripting attacks from happening and you could kind of work around that -->
+    <ng-content></ng-content>
   </div>
 </div>
