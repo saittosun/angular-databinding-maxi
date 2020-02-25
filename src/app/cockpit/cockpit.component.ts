@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -6,23 +6,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cockpit.component.css']
 })
 export class CockpitComponent implements OnInit {
+  // tslint:disable-next-line:max-line-length
+  // add parentheses in the end to call the constructor of eventEmitter and create a new eventEmitter object which is now stored in serverCreated. 
+  // eventEmitter is an object in the Angular framework which allows you to emit your own events.
+  // tslint:disable-next-line:max-line-length
+  // it's not input because we're not getting something passed into this component, it's @output with parentheses because we're passing something out of the component, we're passing our event out of the component
+  @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
+  @Output() blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>();;
   newServerName = '';
   newServerContent = '';
 
   onAddServer() {
-    // this.serverElements.push({
-    //   type: 'server',
-    //   name: this.newServerName,
-    //   content: this.newServerContent
-    // });
+    this.serverCreated.emit({
+      serverName: this.newServerName,
+      serverContent: this.newServerContent
+    });
   }
 
   onAddBlueprint() {
-    // this.serverElements.push({
-    //   type: 'blueprint',
-    //   name: this.newServerName,
-    //   content: this.newServerContent
-    // });
+    this.blueprintCreated.emit({
+      serverName: this.newServerName,
+      serverContent: this.newServerContent
+    });
   }
 
   constructor() { }
