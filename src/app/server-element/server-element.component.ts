@@ -5,10 +5,12 @@ import {
   SimpleChanges,
   OnChanges,
   DoCheck,
-  AfterContentInit, 
+  AfterContentInit,
   AfterViewChecked,
   AfterViewInit,
-  OnDestroy} from '@angular/core';
+  OnDestroy,
+  ViewChild,
+  ElementRef} from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
@@ -32,12 +34,15 @@ export class ServerElementComponent implements
   // tslint:disable-next-line:no-input-rename
   @Input('srvElement') element: {type: string, name: string, content: string};
   @Input() name: string;
+  @ViewChild('heading', {static: true}) header: ElementRef;
+
   constructor() {
     console.log('constructor is called');
   }
 
   ngOnInit(): void {
     console.log('ngonit is called');
+    console.log('text content: ' + this.header.nativeElement.textContent);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -55,6 +60,7 @@ export class ServerElementComponent implements
 
   ngAfterViewChecked() {
     console.log('ngafterviewchecked');
+    console.log('text content: ' + this.header.nativeElement.textContent);
   }
 
   ngAfterViewInit() {
@@ -62,7 +68,7 @@ export class ServerElementComponent implements
   }
 
   ngOnDestroy() {
-    console.log('ngondestroy')
+    console.log('ngondestroy');
   }
 
 }

@@ -31,7 +31,7 @@ export class AppComponent {
   }
 
   onDestroyFirst() {
-    this.serverElements.slice(0, 1);
+    this.serverElements.splice(0, 1);
   }
 
 }
